@@ -1,6 +1,15 @@
 import eslintVitePlugin from "vite-plugin-eslint"
 
 export default defineNuxtConfig({
+    css: [
+      '@/assets/css/main.css',
+    ],
+    postcss: {
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+      },
+    },
     vite: {
         plugins: [
           eslintVitePlugin({

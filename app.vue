@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>das</div>
+    <div class="w-full flex justify-center">das</div>
   </div>
 </template>
 
