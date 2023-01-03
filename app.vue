@@ -1,13 +1,5 @@
 <template>
-  <div>
-    <div class="w-full flex justify-center">das</div>
+  <div class="w-full h-screen flex justify-center items-center">
+    <h1 class="text-4xl">{{ $config.appName }}</h1>
   </div>
 </template>
-
-<script>
-export default {
-  mounted() {
-    console.log(this.$config)
-  },
-}
-</script>
