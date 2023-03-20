@@ -7,7 +7,7 @@ export default async ({ $config }, inject) => {
     },
   }
 
-  const token = useCookie('token');
+  const token = useCookie('token')
 
   if (token.value) {
     headers.common['Authorization'] = token.value
@@ -18,16 +18,19 @@ export default async ({ $config }, inject) => {
     headers,
   })
 
-  instance.interceptors.response.use(function(response) {
-    return response;
-  }, function (error) {
-    if(error.response.status === 401) {
-      token.value = null
-      return window.location = '/auth/login';
-    } else {
-      return Promise.reject(error)
+  instance.interceptors.response.use(
+    function (response) {
+      return response
+    },
+    function (error) {
+      if (error.response.status === 401) {
+        token.value = null
+        return (window.location = '/auth/login')
+      } else {
+        return Promise.reject(error)
+      }
     }
-  });
+  )
 
   if (token.value) {
     await instance.get('/auth/user')
