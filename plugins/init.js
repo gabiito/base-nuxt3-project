@@ -1,6 +1,10 @@
 import axios from 'axios'
 
-export default async ({ $config }, inject) => {
+import { useAuthStore } from '@/stores/auth'
+
+export default async (context, inject) => {
+  const { user, setUser } = useAuthStore()
+
   const headers = {
     common: {
       'Content-Type': 'application/json',
@@ -9,12 +13,14 @@ export default async ({ $config }, inject) => {
 
   const token = useCookie('token')
 
+  console.log(token.value)
+
   if (token.value) {
-    headers.common['Authorization'] = token.value
+    headers.common['Authorization'] = `Bearer ${token.value}`
   }
 
   const instance = axios.create({
-    baseURL: $config.apiBaseUrl,
+    baseURL: context.$config.apiBaseUrl,
     headers,
   })
 
@@ -24,8 +30,9 @@ export default async ({ $config }, inject) => {
     },
     function (error) {
       if (error.response.status === 401) {
-        token.value = null
-        return (window.location = '/auth/login')
+        token.value = undefined
+        // return (window.location = '/auth/login')
+        return response
       } else {
         return Promise.reject(error)
       }
@@ -33,8 +40,13 @@ export default async ({ $config }, inject) => {
   )
 
   if (token.value) {
+    setUser({
+      name: 'Juan',
+      email: 'juan@buildonline.co',
+    })
+
     await instance.get('/auth/user')
   }
 
-  inject('axios', instance)
+  inject('httpClient', instance)
 }

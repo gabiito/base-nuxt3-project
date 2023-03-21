@@ -3,6 +3,7 @@ import eslintVitePlugin from 'vite-plugin-eslint'
 export default defineNuxtConfig({
   plugins: [{ src: '@/plugins/init.js', mode: 'client' }],
   css: ['@/assets/css/main.css'],
+  modules: ['@pinia/nuxt'],
   postcss: {
     plugins: {
       tailwindcss: {},

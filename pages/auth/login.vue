@@ -12,10 +12,17 @@ import { ref } from 'vue'
 const email = ref('')
 const password = ref('')
 
-const login = function () {
+const login = async function () {
+  const { $httpClient } = useNuxtApp()
   const token = useCookie('token')
-  token.value = 'hyurytdsfagbncasiopihdas678'
 
-  navigateTo('/')
+  const response = await $httpClient.post('/auth/login', {
+    email: email.value,
+    password: password.value,
+  })
+
+  token.value = response.data.data.token
+
+  // navigateTo('/')
 }
 </script>
