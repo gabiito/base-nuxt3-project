@@ -1,6 +1,6 @@
 <template>
   <PageWrapper>
-    <div class="w-full flex justify-center mt-20">
+    <div class="w-full flex justify-center pt-20">
       <form class="w-1/2 space-y-4" @submit.prevent="login">
         <h1 class="text-xl text-blue font-semibold text-center mb-8">
           Welcome, enter to your account
