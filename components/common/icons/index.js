@@ -1,3 +1,4 @@
-import ExclamationIcon from './Exclamation'
+import ExclamationIcon from './components/Exclamation'
+import EnvelopeIcon from './components/Envelope'
 
-export { ExclamationIcon }
+export { ExclamationIcon, EnvelopeIcon }
