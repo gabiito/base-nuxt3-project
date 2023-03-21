@@ -1,11 +1,11 @@
-export function useRequest() {
-  const { $httpClient } = useNuxtApp()
-
+export default function useRequest() {
   const get = async (url) => {
+    const { $httpClient } = useNuxtApp()
     return await $httpClient.get(url)
   }
 
   const post = async (url, body) => {
+    const { $httpClient } = useNuxtApp()
     return await $httpClient.post(url, body)
   }
 
