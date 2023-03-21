@@ -20,7 +20,7 @@
           name="password"
           label="Password"
         />
-        <button type="submit">Login</button>
+        <Button type="submit" button-type="secondary">Login</Button>
       </form>
     </div>
   </PageWrapper>
@@ -30,10 +30,9 @@
 import { ref } from 'vue'
 import { useRequest } from '@/composables/useRequest'
 
-import { EnvelopeIcon } from '@/components/common/icons'
-
 import PageWrapper from '@/components/layout/wrappers/PageWrapper'
 import InputField from '@/components/common/inputs/InputField'
+import Button from '@/components/common/buttons/Button'
 
 const email = ref('')
 const password = ref('')
