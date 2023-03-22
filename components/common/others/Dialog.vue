@@ -30,7 +30,7 @@
             leave-to="opacity-0 scale-95"
           >
             <DialogPanel
-              class="w-full max-w-md transform overflow-hidden rounded-md bg-white p-6 text-left align-middle shadow-xl transition-all"
+              class="w-full max-w-md transform overflow-x-hidden overflow-y-scroll rounded-md bg-white p-6 text-left align-middle shadow-xl transition-all"
             >
               <DialogTitle
                 v-if="title !== ''"
@@ -44,15 +44,9 @@
                 <slot name="content" />
               </div>
 
-              <!-- <div class="mt-4">
-                <button
-                  type="button"
-                  class="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                  @click="closeModal"
-                >
-                  Close
-                </button>
-              </div> -->
+              <div class="w-full flex space-x-2 mt-4">
+                <slot name="actions" />
+              </div>
             </DialogPanel>
           </TransitionChild>
         </div>
@@ -62,7 +56,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import {
   TransitionRoot,
   TransitionChild,

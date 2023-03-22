@@ -17,12 +17,33 @@
             </template>
 
             <template #content>
-              <p class="text-sm text-gray-500">
-                Your payment has been successfully submitted. We’ve sent you an
-                email with all of the details of your order.
-              </p>
+              <div class="space-y-4">
+                <p class="text-sm text-gray-500">
+                  Your payment has been successfully submitted. We’ve sent you
+                  an email with all of the details of your order.
+                </p>
 
-              <div class="mt-4">
+                <InputField label="Name" />
+
+                <InputField label="Email" />
+
+                <InputField label="Age" />
+
+                <InputField label="Occupation" />
+
+                <SelectField label="Options" :options="options" z-index="9" />
+              </div>
+            </template>
+
+            <template #actions>
+              <div class="w-full flex space-x-2">
+                <Button
+                  type="button"
+                  @click="onDialogSave"
+                  button-type="primary-outlined"
+                >
+                  Cancel
+                </Button>
                 <Button type="button" @click="onDialogSave"> Save </Button>
               </div>
             </template>
