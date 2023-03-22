@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full">
     <label
       v-if="label !== ''"
       for="email"
@@ -24,14 +24,14 @@
             error !== '',
           'pl-10': hasLeftIcon,
         }"
-        class="block w-full rounded-md border-0 py-1.5 px-2 pr-10 ring-1 ring-inset sm:text-sm sm:leading-6 outline-none focus:outline-none"
+        class="block w-full rounded-md shadow-md border-0 py-1.5 px-2 pr-10 sm:text-sm sm:leading-6 outline-none focus:outline-none"
         @change="$emit('update:modelValue', $event.target.value)"
       />
       <div
         v-if="error !== ''"
         class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
       >
-        <ExclamationIcon class="h-5 w-5" />
+        <ExclamationIcon />
       </div>
     </div>
     <p v-if="error !== ''" class="mt-2 text-sm text-red-600" id="email-error">
@@ -43,7 +43,7 @@
 <script setup>
 import { ExclamationIcon } from '@/components/common/icons'
 
-const props = defineProps({
+defineProps({
   id: {
     type: String,
     default: '',
