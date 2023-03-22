@@ -4,6 +4,7 @@
       <div class="w-1/2 space-y-4">
         <InputField label="Name" />
         <SelectField label="Options" :options="options" />
+        <Switch label="Switch" />
       </div>
     </div>
   </PageWrapper>
@@ -11,8 +12,10 @@
 
 <script setup>
 import PageWrapper from '@/components/layout/wrappers/PageWrapper'
+
 import InputField from '@/components/common/inputs/InputField'
 import SelectField from '@/components/common/inputs/SelectField'
+import Switch from '@/components/common/others/Switch'
 
 const options = reactive([
   { key: '1', value: 'Wade Cooper' },

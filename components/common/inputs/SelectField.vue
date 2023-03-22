@@ -6,7 +6,7 @@
       >{{ label }}</label
     >
     <Listbox v-model="selected">
-      <div class="relative mt-2">
+      <div class="relative mt-2 z-10">
         <ListboxButton
           class="relative w-full cursor-default rounded-md bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-primary-400 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-200 sm:text-sm"
         >
