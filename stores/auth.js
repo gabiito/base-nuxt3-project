@@ -3,11 +3,17 @@ import { defineStore } from 'pinia'
 import useRequest from '@/composables/useRequest'
 
 export const useAuthStore = defineStore('authStore', () => {
+  /* -------------------------- STATE -------------------------- */
+
   const user = ref(null)
+
+  /* -------------------------- MUTATORS -------------------------- */
 
   const setUser = async (newUser) => {
     user.value = newUser
   }
+
+  /* -------------------------- ACTIONS -------------------------- */
 
   const getUser = async () => {
     const { get } = useRequest()
@@ -26,8 +32,6 @@ export const useAuthStore = defineStore('authStore', () => {
     const token = useCookie('token')
     const context = useNuxtApp()
 
-    console.log('CONTEXT', context)
-
     const response = await post('/auth/login', payload)
 
     if (!response.data.success) {
@@ -45,6 +49,8 @@ export const useAuthStore = defineStore('authStore', () => {
 
     await getUser()
   }
+
+  /* -------------------------- RETURN -------------------------- */
 
   return { user, setUser, login }
 })
