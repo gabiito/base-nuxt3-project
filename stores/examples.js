@@ -5,11 +5,12 @@ import useRequest from '@/composables/useRequest'
 export const useExamplesStore = defineStore('examplesStore', () => {
   /* -------------------------- STATE -------------------------- */
 
-  const examples = ref([])
+  const items = ref([])
+  const current = ref(null)
 
   /* -------------------------- ACTIONS -------------------------- */
 
-  const getExamples = async () => {
+  const get = async () => {
     const { get } = useRequest()
 
     const response = await get('https://jsonplaceholder.typicode.com/todos')
@@ -18,10 +19,24 @@ export const useExamplesStore = defineStore('examplesStore', () => {
       throw new Error(response.data)
     }
 
-    examples.value = [...response.data]
+    items.value = [...response.data]
+  }
+
+  const show = async (id) => {
+    const { get } = useRequest()
+
+    const response = await get(
+      `https://jsonplaceholder.typicode.com/todos/${id}`
+    )
+
+    if (response.status !== 200) {
+      throw new Error(response.data)
+    }
+
+    current.value = { ...response.data }
   }
 
   /* -------------------------- RETURN -------------------------- */
 
-  return { getExamples, examples }
+  return { items, current, get, show }
 })

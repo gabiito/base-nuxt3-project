@@ -1,18 +1,8 @@
 <template>
   <div v-if="!loading" class="w-full">
-    <div v-if="items.length > 0" class="space-y-4 mt-10">
-      <Card
-        v-for="item in items"
-        :key="item.id"
-        class="p-2"
-        @click="router.push({ path: `/examples/${item.id}` })"
-      >
-        {{ item.title }}
-      </Card>
-    </div>
-    <div v-else class="w-full mt-10 flex justify-center items-center">
-      No elements to show
-    </div>
+    <Card v-if="current" class="p-2">
+      {{ current.title }}
+    </Card>
   </div>
   <div v-else>Loading...</div>
 </template>
@@ -23,10 +13,11 @@ import { useExamplesStore } from '@/stores/examples'
 
 /* ----------------------------------------------------------------- */
 
-const router = useRouter()
+const route = useRoute()
 const exampleStore = useExamplesStore()
 const loading = ref(true)
-const items = computed(() => exampleStore.items)
+const current = computed(() => exampleStore.current)
+const id = route.params.id
 
 /* ----------------------------------------------------------------- */
 
@@ -37,7 +28,7 @@ definePageMeta({
 onMounted(async () => {
   try {
     loading.value = true
-    await exampleStore.get()
+    await exampleStore.show(id)
   } catch (ex) {
     console.log(ex)
   } finally {
