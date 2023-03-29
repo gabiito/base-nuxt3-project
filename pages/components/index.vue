@@ -1,19 +1,15 @@
 <template>
   <PageWrapper>
-    <div class="w-full flex justify-center">
+    <div class="w-full flex justify-center mt-20">
       <div class="w-1/2 space-y-4">
         <InputField label="Name" />
         <SelectField label="Options" :options="options" />
         <Switch label="Switch" />
+
         <div class="flex justify-center">
           <Dialog ref="dialog" title="Dialog">
             <template #trigger>
-              <button
-                type="button"
-                class="w-72 rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-              >
-                Open dialog
-              </button>
+              <Button class="w-64" type="button"> Open Dialog </Button>
             </template>
 
             <template #content>
@@ -49,6 +45,32 @@
             </template>
           </Dialog>
         </div>
+
+        <div class="flex justify-center">
+          <Dropdown>
+            <template #trigger>
+              <Button class="w-64" type="button"> Open Dropdown </Button>
+            </template>
+            <template #content>
+              <div class="w-full">
+                <ul>
+                  <li
+                    class="flex space-x-2 p-2 rounded-md hover:bg-gray-100 cursor-pointer"
+                  >
+                    <PenIcon />
+                    <span>Edit</span>
+                  </li>
+                  <li
+                    class="flex space-x-2 p-2 rounded-md hover:bg-gray-100 cursor-pointer"
+                  >
+                    <TrashIcon />
+                    <span>Delete</span>
+                  </li>
+                </ul>
+              </div>
+            </template>
+          </Dropdown>
+        </div>
       </div>
     </div>
   </PageWrapper>
@@ -64,6 +86,9 @@ import Button from '@/components/common/buttons/Button'
 
 import Dialog from '@/components/common/others/Dialog'
 import Switch from '@/components/common/others/Switch'
+import Dropdown from '@/components/common/others/Dropdown'
+
+import { TrashIcon, PenIcon } from '@/components/common/icons'
 
 const dialog = ref(null)
 const options = reactive([

@@ -40,7 +40,7 @@ export const useAuthStore = defineStore('authStore', () => {
 
     token.value = response.data.data.token
 
-    context.$httpClient.defaults.headers = {
+    context.$axios.defaults.headers = {
       common: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token.value}`,

@@ -37,7 +37,7 @@ export default defineNuxtPlugin(async (NuxtApp) => {
 
   return {
     provide: {
-      httpClient: instance,
+      axios: instance,
     },
   }
 })
