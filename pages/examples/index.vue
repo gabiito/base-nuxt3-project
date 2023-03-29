@@ -24,11 +24,13 @@ import PageWrapper from '@/components/layout/wrappers/PageWrapper'
 import Card from '@/components/common/others/Card'
 
 import { useExamplesStore } from '@/stores/examples'
+import { useWizardStore } from '@/stores/wizard'
 
 /* ----------------------------------------------------------------- */
 
 const router = useRouter()
 const exampleStore = useExamplesStore()
+const wizardStore = useWizardStore()
 const loading = ref(true)
 const items = computed(() => exampleStore.items)
 
@@ -42,6 +44,7 @@ onMounted(async () => {
   try {
     loading.value = true
     await exampleStore.get()
+    wizardStore.showToast()
   } catch (ex) {
     console.log(ex)
   } finally {
