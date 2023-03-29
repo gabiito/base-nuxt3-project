@@ -6,7 +6,7 @@
       'button-primary-outlined': buttonType === 'primary-outlined',
       'button-secondary': buttonType === 'secondary',
     }"
-    class="w-full flex justify-center rounded-md py-2 px-3 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+    class="flex justify-center rounded-md py-2 px-3 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
   >
     <slot />
   </button>

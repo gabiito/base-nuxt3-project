@@ -47,7 +47,7 @@
         </div>
 
         <div class="flex justify-center">
-          <Dropdown>
+          <Dropdown width="64">
             <template #trigger>
               <Button class="w-64" type="button"> Open Dropdown </Button>
             </template>
