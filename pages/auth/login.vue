@@ -30,16 +30,23 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useAuthStore } from '@/stores/auth'
+
+import { useAuth } from '@/stores/auth'
+import { useToast } from '@/stores/toast'
 
 import PageWrapper from '@/components/layout/wrappers/PageWrapper'
 import InputField from '@/components/common/inputs/InputField'
 import Button from '@/components/common/buttons/Button'
 
+/* ---------------------------------------------------------------- */
+
+const { login } = useAuth()
+const { show: showToast } = useToast()
+
 const email = ref('')
 const password = ref('')
 
-const { login } = useAuthStore()
+/* ---------------------------------------------------------------- */
 
 definePageMeta({
   layout: 'guest',
@@ -54,7 +61,7 @@ const onSubmit = async () => {
 
     navigateTo('/')
   } catch (ex) {
-    console.log(ex)
+    showToast('Error', 'Something went wrong.', 'danger')
   }
 }
 </script>

@@ -5,13 +5,13 @@
 </template>
 
 <script setup>
-import { useAuthStore } from '@/stores/auth'
+import { useAuth } from '@/stores/auth'
 import { storeToRefs } from 'pinia'
 
 definePageMeta({
   middleware: ['authenticated'],
 })
 
-const authStore = useAuthStore()
+const authStore = useAuth()
 const { user } = storeToRefs(authStore)
 </script>

@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 
 import useRequest from '@/composables/useRequest'
 
-export const useAuthStore = defineStore('authStore', () => {
+export const useAuth = defineStore('auth', () => {
   /* -------------------------- STATE -------------------------- */
 
   const user = ref(null)

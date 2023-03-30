@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-import { useAuthStore } from '@/stores/auth'
+import { useAuth } from '@/stores/auth'
 
 export default defineNuxtPlugin(async (NuxtApp) => {
-  const { setUser } = useAuthStore()
+  const { setUser } = useAuth()
   const token = useCookie('token')
 
   const instance = axios.create({
