@@ -15,7 +15,7 @@
         leave-to-class="opacity-0"
       >
         <div
-          v-if="toastVisible"
+          v-if="visible"
           class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
         >
           <div class="p-4">
@@ -28,10 +28,10 @@
               </div>
               <div class="ml-3 w-0 flex-1 pt-0.5">
                 <p class="text-sm font-medium text-gray-900">
-                  Successfully saved!
+                  {{ data.title }}
                 </p>
                 <p class="mt-1 text-sm text-gray-500">
-                  Anyone with a link can now view this file.
+                  {{ data.message }}
                 </p>
               </div>
             </div>
@@ -46,8 +46,10 @@
 // import { CheckCircleIcon } from '@heroicons/vue/24/outline'
 // import { XMarkIcon } from '@heroicons/vue/20/solid'
 
-import { useWizardStore } from '@/stores/wizard'
+import { useToast } from '@/stores/toast'
 
-const wizardStore = useWizardStore()
-const toastVisible = computed(() => wizardStore.toastVisible)
+const toast = useToast()
+
+const visible = computed(() => toast.visible)
+const data = computed(() => toast.data)
 </script>

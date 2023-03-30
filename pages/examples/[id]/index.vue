@@ -11,15 +11,17 @@
 import PageWrapper from '@/components/layout/wrappers/PageWrapper'
 import Card from '@/components/common/others/Card'
 
-import { useExamplesStore } from '@/stores/examples'
+import { useExamples } from '@/stores/examples'
 
 /* ----------------------------------------------------------------- */
 
 const route = useRoute()
-const exampleStore = useExamplesStore()
-const loading = ref(true)
-const current = computed(() => exampleStore.current)
+const examples = useExamples()
+
 const id = route.params.id
+
+const loading = ref(true)
+const current = computed(() => examples.current)
 
 /* ----------------------------------------------------------------- */
 
@@ -30,7 +32,7 @@ definePageMeta({
 onMounted(async () => {
   try {
     loading.value = true
-    await exampleStore.show(id)
+    await examples.show(id)
   } catch (ex) {
     console.log(ex)
   } finally {

@@ -23,16 +23,17 @@
 import PageWrapper from '@/components/layout/wrappers/PageWrapper'
 import Card from '@/components/common/others/Card'
 
-import { useExamplesStore } from '@/stores/examples'
-import { useWizardStore } from '@/stores/wizard'
+import { useExamples } from '@/stores/examples'
+import { useToast } from '@/stores/toast'
 
 /* ----------------------------------------------------------------- */
 
 const router = useRouter()
-const exampleStore = useExamplesStore()
-const wizardStore = useWizardStore()
+const examples = useExamples()
+const { show: showToast } = useToast()
+
 const loading = ref(true)
-const items = computed(() => exampleStore.items)
+const items = computed(() => examples.items)
 
 /* ----------------------------------------------------------------- */
 
@@ -43,8 +44,8 @@ definePageMeta({
 onMounted(async () => {
   try {
     loading.value = true
-    await exampleStore.get()
-    wizardStore.showToast()
+    await examples.get()
+    showToast('Success!!', 'The data was fetched successfully.', 'success')
   } catch (ex) {
     console.log(ex)
   } finally {

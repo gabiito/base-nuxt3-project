@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 
 import useRequest from '@/composables/useRequest'
 
-export const useExamplesStore = defineStore('examplesStore', () => {
+export const useExamples = defineStore('examples', () => {
   /* -------------------------- STATE -------------------------- */
 
   const items = ref([])

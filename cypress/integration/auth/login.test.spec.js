@@ -1,7 +1,7 @@
 describe('Authentication', () => {
     it('User login using email and password with success', () => {
-      cy.intercept('http://serviceowl.test/api/v1/auth/login', {fixture: '/auth/login/success.json'}).as('loginSuccess');
-      cy.intercept('http://serviceowl.test/api/v1/auth/user', {fixture: '/auth/login/user.json'}).as('user');
+      cy.intercept('**/api/v1/auth/login', {fixture: '/auth/login/success.json'}).as('loginSuccess');
+      cy.intercept('**/api/v1/auth/user', {fixture: '/auth/login/user.json'}).as('user');
   
       cy.visit('/auth/login');
 
