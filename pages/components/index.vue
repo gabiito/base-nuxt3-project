@@ -35,8 +35,8 @@
               <div class="w-full flex space-x-2">
                 <Button
                   type="button"
-                  @click="onDialogSave"
                   button-type="primary-outlined"
+                  @click="onDialogSave"
                 >
                   Cancel
                 </Button>

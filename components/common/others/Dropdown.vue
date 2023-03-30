@@ -25,7 +25,7 @@
 <script setup>
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 
-const props = defineProps({
+defineProps({
   width: {
     type: String,
     default: '56',

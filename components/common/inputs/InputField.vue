@@ -34,7 +34,7 @@
         <ExclamationIcon />
       </div>
     </div>
-    <p v-if="error !== ''" class="mt-2 text-sm text-red-600" id="email-error">
+    <p v-if="error !== ''" id="email-error" class="mt-2 text-sm text-red-600">
       {{ error }}
     </p>
   </div>

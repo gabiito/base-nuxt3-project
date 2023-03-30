@@ -6,16 +6,16 @@
           Welcome, enter to your account
         </h1>
         <InputField
-          v-model="email"
           id="email"
+          v-model="email"
           type="email"
           name="email"
           label="Email"
         >
         </InputField>
         <InputField
-          v-model="password"
           id="password"
+          v-model="password"
           type="password"
           name="password"
           label="Password"
