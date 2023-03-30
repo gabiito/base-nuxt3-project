@@ -6,7 +6,7 @@
           Welcome, enter to your account
         </h1>
         <InputField
-          id="email"
+          id="email-input"
           v-model="email"
           type="email"
           name="email"
@@ -14,13 +14,15 @@
         >
         </InputField>
         <InputField
-          id="password"
+          id="password-input"
           v-model="password"
           type="password"
           name="password"
           label="Password"
         />
-        <Button type="submit" button-type="secondary">Login</Button>
+        <Button id="submit-button" type="submit" button-type="secondary"
+          >Login</Button
+        >
       </form>
     </div>
   </PageWrapper>
