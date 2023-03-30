@@ -7,7 +7,7 @@ export const useToast = defineStore('toast', () => {
   const data = ref({
     title: '',
     message: '',
-    type: '',
+    type: 'success',
   })
 
   /* -------------------------- ACTIONS -------------------------- */

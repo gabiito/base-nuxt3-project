@@ -22,7 +22,13 @@
             <div class="flex items-start">
               <div class="flex-shrink-0">
                 <CheckCircleIcon
+                  v-if="data.type === 'success'"
                   class="h-6 w-6 text-green-400"
+                  aria-hidden="true"
+                />
+                <XMarkCircleIcon
+                  v-if="data.type === 'danger'"
+                  class="h-6 w-6 text-red-400"
                   aria-hidden="true"
                 />
               </div>
@@ -43,8 +49,7 @@
 </template>
 
 <script setup>
-// import { CheckCircleIcon } from '@heroicons/vue/24/outline'
-// import { XMarkIcon } from '@heroicons/vue/20/solid'
+import { CheckCircleIcon, XMarkCircleIcon } from '@/components/common/icons'
 
 import { useToast } from '@/stores/toast'
 
