@@ -6,9 +6,22 @@
       'button-primary-outlined': buttonType === 'primary-outlined',
       'button-secondary': buttonType === 'secondary',
     }"
-    class="flex justify-center rounded-md py-2 px-3 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+    class="flex justify-center relative rounded-md py-2 px-3 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
   >
+    <div
+      v-if="hasLeftIcon"
+      class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+    >
+      <slot name="leftIcon"></slot>
+    </div>
     <slot />
+
+    <div
+      v-if="hasRightIcon"
+      class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+    >
+      <slot name="rightIcon"></slot>
+    </div>
   </button>
 </template>
 
@@ -23,6 +36,11 @@ defineProps({
     default: 'primary',
   },
 })
+
+const slots = useSlots()
+
+const hasLeftIcon = computed(() => !!slots.leftIcon)
+const hasRightIcon = computed(() => !!slots.rightIcon)
 </script>
 
 <style scoped>
