@@ -25,7 +25,7 @@
           'pl-10': hasLeftIcon,
         }"
         class="block w-full rounded-md shadow-md border-0 py-1.5 px-2 pr-10 sm:text-sm sm:leading-6 outline-none focus:outline-none"
-        @change="$emit('update:modelValue', $event.target.value)"
+        @input="$emit('update:modelValue', $event.target.value)"
       />
       <div
         v-if="error !== ''"
@@ -34,7 +34,11 @@
         <ExclamationIcon />
       </div>
     </div>
-    <p v-if="error !== ''" id="email-error" class="mt-2 text-sm text-red-600">
+    <p
+      v-if="error !== ''"
+      id="email-error"
+      class="mt-2 text-sm text-red-600 capitalize"
+    >
       {{ error }}
     </p>
   </div>
@@ -42,6 +46,8 @@
 
 <script setup>
 import { ExclamationIcon } from '@/components/common/icons'
+
+defineEmits(['update:modelValue'])
 
 defineProps({
   id: {
