@@ -2,7 +2,7 @@
   <div class="w-full">
     <label
       v-if="label !== ''"
-      :for="state.uniqueId"
+      :for="id"
       class="block text-sm font-medium leading-6 text-gray-900"
       >{{ label }}</label
     >
@@ -15,7 +15,7 @@
       </div>
       <input
         v-bind="$attrs"
-        :id="state.uniqueId"
+        :id="id"
         :value="modelValue"
         class="w-full shadow-inner shadow-slate-300 outline bg-gray-50 rounded-md py-2 px-3 text-sm"
         :class="{
@@ -104,12 +104,16 @@ const attrs = useAttrs()
 /*------------ State ------------*/
 
 const state = reactive({
-  uniqueId: '',
   emptyState: true,
 })
 
 const hasLeftIcon = computed(() => {
   return !!slots.leftIcon
+})
+
+const id = computed(() => {
+  const passedValue = props.id || attrs.id
+  return passedValue || `input-${Math.random().toString(16).slice(2)}`
 })
 
 /*------------ Methods ------------*/
@@ -121,7 +125,6 @@ const updateInput = (event) => {
 /*------------ Lifecycle Hooks ------------*/
 
 onMounted(() => {
-  state.uniqueId = props.id || attrs.id || Math.random().toString(16).slice(2)
   state.emptyState =
     !props.success && !props.warning && !props.info && props.error === ''
 })
