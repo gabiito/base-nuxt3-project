@@ -71,6 +71,12 @@
             </template>
           </Dropdown>
         </div>
+
+        <div class="flex justify-center">
+          <Button class="w-64" type="button" @click="openDemoModal">
+            Open Modal
+          </Button>
+        </div>
       </div>
     </div>
   </PageWrapper>
@@ -88,7 +94,11 @@ import Dialog from '@/components/common/others/Dialog'
 import Switch from '@/components/common/others/Switch'
 import Dropdown from '@/components/common/others/Dropdown'
 
+import { useModal } from '@/stores/modal'
+
 import { TrashIcon, PenIcon } from '@/components/common/icons'
+
+const { show: showModal } = useModal()
 
 const dialog = ref(null)
 const options = reactive([
@@ -102,5 +112,14 @@ const options = reactive([
 
 const onDialogSave = () => {
   dialog.value.closeModal()
+}
+
+const openDemoModal = () => {
+  showModal({
+    title: 'Demo modal title',
+    maxWidth: '600px',
+    height: 'auto',
+    component: 'Demo',
+  })
 }
 </script>

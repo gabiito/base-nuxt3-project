@@ -21,6 +21,7 @@ export default defineNuxtConfig({
       appName: process.env.APP_NAME,
       appUrl: process.env.APP_URL,
       apiBaseUrl: process.env.API_BASE_URL,
+      componentsDir: __dirname + '/components',
     },
   },
 })
